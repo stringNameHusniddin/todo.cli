@@ -26,9 +26,9 @@ const delJson = async num =>{
     if(await isFile(filePath)){
         const file = await fs.promises.readFile(filePath)
         let array = JSON.parse(file)
-        let massiv = array.filter(mal => mal.title != array[num].title)
+        let massiv = array.filter(mal => mal.do != array[num].do)
 
-        await fs.promises.writeFile(filePath, JSON.stringify(massiv))
+        fs.promises.writeFile(filePath, JSON.stringify(massiv))
     }
 }
 
