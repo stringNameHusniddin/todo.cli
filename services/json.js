@@ -1,6 +1,8 @@
 import os from 'os'
 import path from 'path'
 import fs from 'fs'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const filePath = path.join(os.homedir(), 'todo_cli.json')
 
@@ -15,6 +17,9 @@ const writeJson = async (do_, title) =>{
 
     data['do'] = do_
     data['title'] = title
+    data["id"] = uuidv4()
+
+    
 
     array.push(data)
 
@@ -26,7 +31,7 @@ const delJson = async num =>{
     if(await isFile(filePath)){
         const file = await fs.promises.readFile(filePath)
         let array = JSON.parse(file)
-        let massiv = array.filter(mal => mal.do != array[num].do)
+        let massiv = array.filter(mal => mal.id != array[num].id)
 
         fs.promises.writeFile(filePath, JSON.stringify(massiv))
     }
