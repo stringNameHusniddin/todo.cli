@@ -26,7 +26,7 @@ const writeJson = async (do_, title) =>{
     await fs.promises.writeFile(filePath, JSON.stringify(array))
 
 }
-
+// delete
 const delJson = async num =>{
     if(await isFile(filePath)){
         const file = await fs.promises.readFile(filePath)
